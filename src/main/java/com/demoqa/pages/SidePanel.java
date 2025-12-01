@@ -13,8 +13,8 @@ public class SidePanel extends BasePage {
 @FindBy(xpath = "//span[.='Login']")
     WebElement login;
     public LoginPage selectLogin() {
-//        clickWithJS(login, 0, 800);
-        click(login);
+        clickWithJS(login, 0, 2000);
+//        click(login);
         return new LoginPage(driver);
     }
 }
