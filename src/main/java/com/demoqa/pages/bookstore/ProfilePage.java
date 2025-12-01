@@ -10,7 +10,7 @@ public class ProfilePage extends BasePage {
     public ProfilePage(WebDriver driver) {
         super(driver);
     }
-@FindBy(id = "#userName-value")
+@FindBy(id = "userName-value")
     WebElement userNameValue;
     public ProfilePage verifyUserName(String name) {
         Assertions.assertTrue(userNameValue.getText().contains(name));
