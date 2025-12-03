@@ -18,4 +18,20 @@ public class HomePage extends BasePage {
 //        click(bookStore);
         return new SidePanel(driver);
     }
+
+    @FindBy(css = ".card:nth-child(1)")
+    WebElement elements;
+
+    public SidePanel selectElemets() {
+        clickWithJS(elements, 0, 2000);
+//        click(elements);
+        return new SidePanel(driver);
+    }
+
+    @FindBy(css = ".card:nth-child(3)")
+    WebElement alertsFrameWindows;
+    public SidePanel selectAlertsRfameWindows() {
+        clickWithJS(alertsFrameWindows, 0, 2000);
+        return new SidePanel(driver);
+    }
 }

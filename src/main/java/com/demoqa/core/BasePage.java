@@ -1,9 +1,14 @@
 package com.demoqa.core;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class BasePage {
 
@@ -39,5 +44,28 @@ public class BasePage {
             element.clear();
             element.sendKeys(text);
         }
+    }
+
+    public boolean isAlertPresent(int seconds) {
+        Alert alert = getWait(seconds)
+                .until(ExpectedConditions.alertIsPresent());
+        if (alert == null) {
+            return false;
+        } else {
+            driver.switchTo().alert().accept();
+            return true;
+        }
+    }
+    public WebDriverWait getWait(int seconds) {
+        return new WebDriverWait(driver, Duration.ofSeconds(seconds));
+    }
+
+    public boolean isContains(String text, WebElement element) {
+        return element.getText().contains(text);
+    }
+
+    public boolean shouldHaveText(WebElement element, String text, int time) {
+        return getWait(time)
+                .until(ExpectedConditions.textToBePresentInElement(element,text));
     }
 }
