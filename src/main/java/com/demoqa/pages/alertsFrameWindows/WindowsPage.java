@@ -24,8 +24,7 @@ public class WindowsPage extends BasePage {
     }
 
     public WindowsPage switchToNewTab(int index) {
-        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(index));
+        switchToNewTabWindow(index);
         return this;
     }
 
